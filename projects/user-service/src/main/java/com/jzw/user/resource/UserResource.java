@@ -1,0 +1,32 @@
+package com.jzw.user.resource;
+
+import com.jzw.api.user.dto.User;
+import com.jzw.api.user.service.IUserService;
+import com.jzw.common.bean.BaseResponse;
+import com.jzw.user.service.user.UserService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Created by boying on 2018/5/6.
+ */
+@RestController
+public class UserResource implements IUserService{
+    @Autowired
+    private UserService userService;
+
+    @Override
+    // TODO 设置序列化方式
+    public BaseResponse<User> getUserById(@RequestParam("id") long userId) {
+        com.jzw.user.domain.User user = userService.getUser(userId);
+        if(user == null){
+            return null;
+        }
+        User ret = new User();
+        BeanUtils.copyProperties(user, ret);
+        return BaseResponse.success(ret);
+    }
+
+}

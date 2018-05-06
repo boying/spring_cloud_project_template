@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+hikari:
+  user:
+    jdbcUrl: jdbc:mysql://spring:3306/user?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+
+

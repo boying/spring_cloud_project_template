@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jzw.user.dao.UserDao">
+    <sql id="allColumns">
+        id,
+        name,
+        updated_at,
+        created_at,
+        is_delete
+    </sql>
+
+    <sql id="allColumnsUpsert">
+        name,
+        updated_at,
+        created_at,
+        is_delete
+    </sql>
+
+    <insert id="addUser" parameterType="com.jzw.user.domain.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(<include refid="allColumnsUpsert" />)
+        VALUES
+        (#{name}, #{updatedAt}, #{createdAt}, #{isDelete})
+    </insert>
+
+    <select id="getUserById" resultType="com.jzw.user.domain.User">
+        SELECT <include refid="allColumns" />
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <select id="getUserByName" resultType="com.jzw.user.domain.User">
+        SELECT <include refid="allColumns" />
+        FROM user
+        WHERE name = #{name}
+    </select>
+</mapper>

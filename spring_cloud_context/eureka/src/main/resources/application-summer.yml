@@ -5,6 +5,9 @@ spring:
 server:
   port: 1301
 
+logging:
+  file: ${spring.application.name}.log
+
 eureka:
   instance:
     hostname: summer

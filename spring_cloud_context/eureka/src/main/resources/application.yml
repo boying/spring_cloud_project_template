@@ -5,6 +5,9 @@ spring:
 server:
   port: 1300
 
+logging:
+  file: ${spring.application.name}.log
+
 eureka:
   instance:
     hostname: localhost
@@ -16,8 +19,5 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 
-
-# eureka.client.register-with-eureka=false
-# eureka.client.fetch-registry=false
 
 # eureka.client.serviceUrl.defaultZone=http://{${eureka.instance.hostname}}:1301/eureka/
