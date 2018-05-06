@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eureka-server
+
+server:
+  port: 1300
+
+eureka:
+  instance:
+    hostname: spring
+  server:
+    enable-self-preservation: false # 关闭保护机制
+  client:
+    serviceUrl:
+      defaultZone: http://summer:1301/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+
