@@ -35,6 +35,12 @@ processResources {
     }
 }
 
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.SR3'
+    }
+}
+
 dependencies {
     compile('com.jzw:common-utils:0.0.1-SNAPSHOT')
     compile('com.jzw:user-service-api:0.0.1-SNAPSHOT')
@@ -43,6 +49,8 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-data-redis')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
 
     compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.0')
     compile('mysql:mysql-connector-java:5.1.39')

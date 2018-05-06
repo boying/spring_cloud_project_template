@@ -1,5 +1,14 @@
+spring:
+  application:
+    name: user-service
+
 server:
   port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://spring:1300/eureka/,http://summer:1301/eureka/
 
 hikari:
   user:

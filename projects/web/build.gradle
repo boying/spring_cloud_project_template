@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.8.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        // classpath "info.robotbrain.gradle.lombok:lombok-gradle:1.0.2"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+group = 'com.jzw'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    mavenCentral()
+}
+
+processResources {
+    from("src/main/java") {
+        include "**/*"
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.SR3'
+    }
+}
+
+dependencies {
+    compile('com.jzw:common-utils:0.0.1-SNAPSHOT')
+    compile('com.jzw:user-service-api:0.0.1-SNAPSHOT')
+
+    compile('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    compile('org.springframework.cloud:spring-cloud-starter-eureka')
+    compile('org.springframework.cloud:spring-cloud-starter-feign')
+    
+    compile('org.codehaus.jackson:jackson-mapper-asl:1.9.13')
+    compile('com.fasterxml.jackson.core:jackson-databind:2.8.9')
+
+    compile('com.google.code.gson:gson:2.8.2')
+    compile('com.google.guava:guava:21.0')
+
+}
+
+bootRun {
+    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
+}
