@@ -5,6 +5,11 @@ kill -9 `ps aux | grep gradlew | grep web | awk '{print $2}' `
 
 BASE_PATH=`pwd`
 
+cd $BASE_PATH/projects/common-utils
+./gradlew clean build uploadArchives
+
+cd $BASE_PATH/projects/user-service-api
+./gradlew clean build uploadArchives
 
 cd $BASE_PATH/projects/user-service
 sh start.sh
