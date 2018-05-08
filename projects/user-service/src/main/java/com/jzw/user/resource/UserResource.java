@@ -29,4 +29,12 @@ public class UserResource implements IUserService{
         return BaseResponse.success(ret);
     }
 
+    @Override
+    public BaseResponse<Long> unstable(@RequestParam("sleep") long milliseconds) {
+        long sleep = Math.round(Math.random() * milliseconds);
+        try {
+            Thread.sleep(sleep);
+        }catch (Exception e){}
+        return BaseResponse.success(sleep);
+    }
 }

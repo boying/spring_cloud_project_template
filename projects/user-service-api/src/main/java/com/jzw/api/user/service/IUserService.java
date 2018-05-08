@@ -8,4 +8,7 @@ import org.springframework.web.bind.annotation.*;
 public interface IUserService {
     @RequestMapping(value = "/get-user-by-id", method = RequestMethod.GET)
     BaseResponse<User> getUserById(@RequestParam("id") long id);
+
+    @RequestMapping(value = "/unstable", method = RequestMethod.GET)
+    BaseResponse<Long> unstable(@RequestParam("sleep") long milliseconds);
 }
