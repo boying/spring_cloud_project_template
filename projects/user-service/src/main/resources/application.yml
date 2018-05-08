@@ -5,6 +5,9 @@ spring:
 server:
   port: 8081
 
+logging:
+  file: ${spring.application.name}.log
+
 eureka:
   client:
     serviceUrl:
