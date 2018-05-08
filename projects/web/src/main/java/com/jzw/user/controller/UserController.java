@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.*;
  * Created by boying on 2018/5/6.
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/web/user")
 public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
     private UserServiceClient userServiceClient;
 
-    @ResponseBody
     @RequestMapping(value = "/{userId}",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public BaseResponse<User> getUser(@PathVariable("userId") long userId){
         return userService.getUserById(userId);
     }
 
-    @RequestMapping("/unstable")
-    public BaseResponse<Long> unstable(@PathVariable("sleep") long millisconds){
+    @RequestMapping(value = "/unstable",  method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public BaseResponse<Long> unstable(@RequestParam("sleep") long millisconds){
         return userServiceClient.unstable(millisconds);
     }
 }
