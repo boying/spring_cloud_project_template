@@ -41,11 +41,10 @@ public class UserResource implements IUserService {
 
     @Override
     public BaseResponse<Long> sleep(@RequestParam("sleep") long milliseconds) {
-        long sleep = Math.round(Math.random() * milliseconds);
         try {
-            Thread.sleep(sleep);
+            Thread.sleep(milliseconds);
         } catch (Exception e) {
         }
-        return BaseResponse.success(sleep);
+        return BaseResponse.success(milliseconds);
     }
 }
