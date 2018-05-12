@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by boying on 2018/5/6.
  */
 @RestController
-public class UserResource implements IUserService{
+public class UserResource implements IUserService {
     @Autowired
     private UserService userService;
 
@@ -21,7 +21,7 @@ public class UserResource implements IUserService{
     // TODO 设置序列化方式
     public BaseResponse<User> getUserById(@RequestParam("id") long userId) {
         com.jzw.user.domain.User user = userService.getUser(userId);
-        if(user == null){
+        if (user == null) {
             return null;
         }
         User ret = new User();
@@ -34,7 +34,18 @@ public class UserResource implements IUserService{
         long sleep = Math.round(Math.random() * milliseconds);
         try {
             Thread.sleep(sleep);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
+        return BaseResponse.success(sleep);
+    }
+
+    @Override
+    public BaseResponse<Long> sleep(@RequestParam("sleep") long milliseconds) {
+        long sleep = Math.round(Math.random() * milliseconds);
+        try {
+            Thread.sleep(sleep);
+        } catch (Exception e) {
+        }
         return BaseResponse.success(sleep);
     }
 }

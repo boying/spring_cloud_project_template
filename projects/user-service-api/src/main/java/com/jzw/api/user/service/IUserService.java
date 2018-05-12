@@ -11,4 +11,7 @@ public interface IUserService {
 
     @RequestMapping(value = "/unstable", method = RequestMethod.GET)
     BaseResponse<Long> unstable(@RequestParam("sleep") long milliseconds);
+
+    @RequestMapping(value = "/sleep", method = RequestMethod.GET)
+    BaseResponse<Long> sleep(@RequestParam("sleep") long milliseconds);
 }
