@@ -13,9 +13,13 @@ eureka:
     serviceUrl:
       defaultZone: http://spring:1300/eureka/, http://summer:1301/eureka/
 
+feign:
+  hystrix:
+    enabled: true
+
 ribbon:
   ConnectTimeout: 500
-  ReadTimeout: 4000
+  ReadTimeout: 7000
 
 hystrix:
   command:
@@ -25,7 +29,7 @@ hystrix:
           enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 3000
+            timeoutInMilliseconds: 2000
 
 # 全局关闭hystrix支持
 #feign.hystrix.enabled=false

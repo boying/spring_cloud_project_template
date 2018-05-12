@@ -2,7 +2,7 @@ package com.jzw.user.service.user;
 
 import com.jzw.api.user.dto.User;
 import com.jzw.common.bean.BaseResponse;
-import com.jzw.user.remote.UserServiceClient;
+import com.jzw.user.remote.UserServiceFallbackClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     @Autowired
-    private UserServiceClient userServiceClient;
+    private UserServiceFallbackClient userServiceClient;
 
     public BaseResponse<User> getUserById(long id){
         return userServiceClient.getUserById(id);

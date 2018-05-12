@@ -3,6 +3,7 @@ package com.jzw.user.controller;
 import com.jzw.api.user.dto.User;
 import com.jzw.common.bean.BaseResponse;
 import com.jzw.user.remote.UserServiceClient;
+import com.jzw.user.remote.UserServiceFallbackClient;
 import com.jzw.user.service.user.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

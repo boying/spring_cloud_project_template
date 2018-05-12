@@ -29,12 +29,6 @@ repositories {
     mavenCentral()
 }
 
-processResources {
-    from("src/main/java") {
-        include "**/*"
-    }
-}
-
 dependencyManagement {
     imports {
         mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Edgware.SR3'
@@ -47,6 +41,8 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
     compile('org.springframework.cloud:spring-cloud-starter-eureka')

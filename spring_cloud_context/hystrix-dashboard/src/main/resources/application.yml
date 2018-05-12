@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: hystrix-dashboard
+
+server:
+  port: 2001
+
+logging:
+  file: ${spring.application.name}.log
