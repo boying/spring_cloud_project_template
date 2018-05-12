@@ -13,6 +13,10 @@ eureka:
     serviceUrl:
       defaultZone: http://spring:1300/eureka/, http://summer:1301/eureka/
 
+ribbon:
+  ConnectTimeout: 500
+  ReadTimeout: 4000
+
 hystrix:
   command:
     default:

@@ -4,6 +4,7 @@ import com.jzw.api.user.dto.User;
 import com.jzw.api.user.service.IUserService;
 import com.jzw.common.bean.BaseResponse;
 import com.jzw.user.service.user.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UserResource implements IUserService {
+    private final Logger logger = Logger.getLogger(getClass());
+
     @Autowired
     private UserService userService;
 
@@ -35,6 +38,7 @@ public class UserResource implements IUserService {
         try {
             Thread.sleep(sleep);
         } catch (Exception e) {
+            logger.error("sleep error: ", e);
         }
         return BaseResponse.success(sleep);
     }
@@ -44,6 +48,7 @@ public class UserResource implements IUserService {
         try {
             Thread.sleep(milliseconds);
         } catch (Exception e) {
+            logger.error("sleep error: ", e);
         }
         return BaseResponse.success(milliseconds);
     }

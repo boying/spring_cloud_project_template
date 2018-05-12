@@ -4,6 +4,7 @@ import com.jzw.api.user.dto.User;
 import com.jzw.common.bean.BaseResponse;
 import com.jzw.user.remote.UserServiceClient;
 import com.jzw.user.service.user.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/web/user")
 public class UserController {
+    private final Logger logger = Logger.getLogger(getClass());
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -36,9 +39,10 @@ public class UserController {
     public BaseResponse<Long> sleep(@RequestParam("sleep") long millisconds){
         try {
             BaseResponse<Long> ret = userServiceClient.sleep(millisconds);
-            // TODO log
+            logger.info("sleep " + millisconds);
             return ret;
         }catch (Exception e){
+            logger.error("sleep error: ", e);
             throw e;
         }
     }
