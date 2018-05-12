@@ -45,6 +45,7 @@ public class UserResource implements IUserService {
 
     @Override
     public BaseResponse<Long> sleep(@RequestParam("sleep") long milliseconds) {
+        logger.info("sleep into, sleep " + milliseconds);
         try {
             Thread.sleep(milliseconds);
         } catch (Exception e) {
