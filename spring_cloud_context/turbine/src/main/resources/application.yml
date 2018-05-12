@@ -14,7 +14,7 @@ eureka:
       defaultZone: http://spring:1300/eureka/, http://summer:1301/eureka/
 
 turbine:
-  app-config: WEB, USER-SERVICE, BOOK-SERVICE
+  app-config: WEB
   cluster-name-expression: default
   combine-host-port: true
 
