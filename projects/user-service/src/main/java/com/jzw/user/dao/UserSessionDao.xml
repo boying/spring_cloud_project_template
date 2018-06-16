@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jzw.user.dao.UserSessionDao">
+    <sql id="allColumns">
+        id as id,
+        pc_token as pcToken,
+        pc_token_expire_time as pcTokenExpireTime,
+        android_token as androidToken,
+        android_token_expire_time as androidTokenExpireTime,
+        ios_token as iosTokenExpireTime,
+        ios_token_expire_time as iosTokenExpireTime,
+        updated_at as updatedAt,
+        created_at as createdAt,
+        is_delete as isDelete
+    </sql>
+
+    <sql id="allColumnsUpsert">
+        id,
+        pc_token,
+        pc_token_expire_time,
+        android_token,
+        android_token_expire_time,
+        ios_token,
+        ios_token_expire_time
+    </sql>
+
+    <select id="getById" resultType="com.jzw.user.domain.UserSession">
+        SELECT <include refid="allColumns" />
+        FROM user_session
+        WHERE id = #{id}
+    </select>
+
+    <insert id="addUserSession" parameterType="com.jzw.user.domain.UserSession">
+        INSERT INTO user_session (<include refid="allColumnsUpsert" />)
+        VALUES
+        (
+        #{id},
+        #{pcToken},
+        #{pcTokenExpireTime},
+        #{androidToken},
+        #{androidTokenExpireTime},
+        #{iosToken},
+        #{iosTokenExpireTime}
+        )
+    </insert>
+
+    <update id="updatePcToken" >
+        UPDATE user_session
+        SET pc_token = #{token},
+        pc_token_expire_time = #{expireTime}
+        WHERE id = #{id}
+    </update>
+
+    <select id="getByPcToken" resultType="com.jzw.user.domain.UserSession">
+        SELECT <include refid="allColumns" />
+        FROM user_session
+        WHERE pc_token = #{token}
+    </select>
+
+
+</mapper>

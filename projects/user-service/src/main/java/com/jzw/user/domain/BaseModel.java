@@ -51,4 +51,6 @@ public class BaseModel {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
+
 }

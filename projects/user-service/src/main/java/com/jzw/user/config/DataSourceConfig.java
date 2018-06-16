@@ -28,7 +28,7 @@ public class DataSourceConfig {
     }
 
 
-    @Bean
+    @Bean(name = "transactionManager")
     public DataSourceTransactionManager userTransactionManager(@Qualifier("userDataSource") DataSource dataSource) throws Exception {
         return new DataSourceTransactionManager(dataSource);
     }

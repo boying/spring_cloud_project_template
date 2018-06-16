@@ -1,5 +1,6 @@
 package com.jzw.user.service.user;
 
+import com.jzw.user.bean.LoginChannel;
 import com.jzw.user.dao.UserDao;
 import com.jzw.user.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    @Transactional("userTransactionManager")
+    @Transactional
     public void addUser(User user){
         userDao.addUser(user);
     }
@@ -23,5 +24,10 @@ public class UserService {
         return userDao.getUserById(userId);
     }
 
+    public User getUserByToken(String token){
+        return null;
+    }
+
+    public void loginSuccess(Long userId, LoginChannel loginChannel){}
 
 }
