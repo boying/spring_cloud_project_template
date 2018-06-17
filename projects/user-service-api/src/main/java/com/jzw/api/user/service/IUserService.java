@@ -1,6 +1,7 @@
 package com.jzw.api.user.service;
 
 import com.jzw.api.user.dto.User;
+import com.jzw.api.user.dto.UserAuthResult;
 import com.jzw.common.bean.BaseResponse;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,4 +15,7 @@ public interface IUserService {
 
     @RequestMapping(value = "/sleep", method = RequestMethod.GET)
     BaseResponse<Long> sleep(@RequestParam("sleep") long milliseconds);
+
+    @RequestMapping(value = "/auth-token", method = RequestMethod.GET)
+    BaseResponse<UserAuthResult> authToken(@RequestParam("token") String token);
 }

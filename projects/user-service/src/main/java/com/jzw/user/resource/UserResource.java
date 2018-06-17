@@ -1,9 +1,11 @@
 package com.jzw.user.resource;
 
 import com.jzw.api.user.dto.User;
+import com.jzw.api.user.dto.UserAuthResult;
 import com.jzw.api.user.service.IUserService;
 import com.jzw.common.bean.BaseResponse;
 import com.jzw.user.service.user.UserService;
+import com.jzw.user.service.user.UserSessionService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ public class UserResource implements IUserService {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserSessionService userSessionService;
 
     @Override
     // TODO 设置序列化方式
@@ -52,5 +56,10 @@ public class UserResource implements IUserService {
             logger.error("sleep error: ", e);
         }
         return BaseResponse.success(milliseconds);
+    }
+
+    @Override
+    public BaseResponse<UserAuthResult> authToken(@RequestParam("token") String token) {
+        return userSessionService.userAuth(token);
     }
 }

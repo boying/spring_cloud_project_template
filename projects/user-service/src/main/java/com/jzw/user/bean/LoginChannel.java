@@ -5,7 +5,7 @@ package com.jzw.user.bean;
  */
 public enum LoginChannel {
     PC(0, "p"),
-    ANDOIRD(1, "a"),
+    ANDROID(1, "a"),
     IOS(2, "i");
     int val;
     String tokenPrefix;
@@ -25,5 +25,14 @@ public enum LoginChannel {
 
     public void setTokenPrefix(String tokenPrefix) {
         this.tokenPrefix = tokenPrefix;
+    }
+
+    public static LoginChannel getByTokenPrefix(String prefix){
+        for (LoginChannel loginChannel : LoginChannel.values()) {
+            if(loginChannel.tokenPrefix.equals(prefix)){
+                return loginChannel;
+            }
+        }
+        return null;
     }
 }

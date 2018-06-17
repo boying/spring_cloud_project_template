@@ -2,7 +2,6 @@ package com.jzw.user.dao;
 
 import com.jzw.user.BaseTest;
 import com.jzw.user.domain.UserSession;
-import org.bouncycastle.util.Times;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
